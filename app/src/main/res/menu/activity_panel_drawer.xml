@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_panel"
+            android:icon="@drawable/menu_panel"
+            android:title="Dashboard"/>
+    </group>
+
+    <item android:title="Surat">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_compose"
+                    android:icon="@drawable/menu_compose"
+                    android:title="Buat Surat" />
+                <item
+                    android:id="@+id/menu_inbox"
+                    android:icon="@drawable/menu_inbox"
+                    android:title="Surat Masuk" />
+                <item
+                    android:id="@+id/menu_outbox"
+                    android:icon="@drawable/menu_outbox"
+                    android:title="Surat Terkirim" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Disposisi">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_dmasuk"
+                    android:icon="@drawable/menu_dmasuk"
+                    android:title="Disposisi Masuk" />
+                <item
+                    android:id="@+id/menu_dkeluar"
+                    android:icon="@drawable/menu_dkeluar"
+                    android:title="Disposisi Keluar" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/administrator_items"
+        android:title="Pengaturan Sistem">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_mpengguna"
+                    android:title="Manajemen Pengguna"
+                    android:icon="@drawable/menu_mpengguna"/>
+                <item
+                    android:id="@+id/menu_mjabatan"
+                    android:title="Manajemen Jabatan"
+                    android:icon="@drawable/menu_mjabatan"/>
+                <item
+                    android:id="@+id/menu_mdinas"
+                    android:title="Manajemen Dinas"
+                    android:icon="@drawable/menu_mdinas"/>
+            </group>
+        </menu>
+    </item>
+
+</menu>

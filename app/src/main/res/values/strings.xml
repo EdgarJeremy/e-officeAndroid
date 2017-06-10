@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">e-Office</string>
+    <string name="title_activity_panel">PanelActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="server_error_msg">Server tidak bisa dihubungi saat ini! Coba lagi nanti</string>
+
+    <string-array name="instruksi_disposisi">
+        <item>Ditindak Lanjuti</item>
+        <item>Ditanggapi Tertulis</item>
+        <item>Disiapkan makalah/sambutan/presentasi sesuai tema</item>
+        <item>Koordinasikan dengan</item>
+        <item>Diwakili dan laporkan hasilnya</item>
+        <item>Dihadiri dan laporkan hasilnya</item>
+        <item>Disiapkan surat/memo dinas internal</item>
+        <item>Arsip/File</item>
+        <item>Lain-lain</item>
+        <item>Diketahui</item>
+        <item>Diperhatikan</item>
+        <item>Diberi penjelasan</item>
+        <item>Diwakili</item>
+        <item>Dibicarakan dengan saya</item>
+        <item>Diproses sesuai ketentuan yang berlaku</item>
+        <item>Dilaksanakan/Diselesaikan/Disempurnakan</item>
+        <item>Dijawab dengan surat</item>
+        <item>Disiapkan sambutan tertulis</item>
+        <item>Disiapkan atau saran-saran</item>
+    </string-array>
+</resources>

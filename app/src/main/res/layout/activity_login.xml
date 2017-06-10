@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="id.go.manadokota.e_office.LoginActivity"
+    android:background="#ecf0f1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/imageView"
+            android:src="@drawable/logo"
+            android:layout_weight="3"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/etUsername"
+                android:hint="Username"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/etPassword"
+                android:hint="Password"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp" />
+
+            <Button
+                android:text="Masuk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnLogin"
+                android:layout_marginTop="20dp"
+                android:padding="25dp"
+                android:capitalize="words"
+                android:elevation="24dp"
+                android:background="#3498db"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:text="Copyright © 2017 All Rights Reserverd\nCerdas Command Center Development"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvCopyright"
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
