@@ -31,6 +31,10 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
+                    android:id="@+id/menu_bdisposisi"
+                    android:icon="@drawable/menu_bdisposisi"
+                    android:title="Buat Disposisi (Mandiri)"/>
+                <item
                     android:id="@+id/menu_dmasuk"
                     android:icon="@drawable/menu_dmasuk"
                     android:title="Disposisi Masuk" />

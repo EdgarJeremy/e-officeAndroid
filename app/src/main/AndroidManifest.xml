@@ -36,7 +36,7 @@
             android:name=".SocketService"
             android:exported="false" />
 
-        <activity android:name=".BacaSuratActivity">
+        <activity android:name=".BacaInboxActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".InboxActivity" />
@@ -49,10 +49,23 @@
         <activity android:name=".PilihPenerimaSurat">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".BacaSuratActivity" />
+                android:value=".BacaInboxActivity" />
         </activity>
-        <activity android:name=".BuatDisposisiActivity">
+        <activity android:name=".BuatDisposisiActivity" />
+        <activity android:name=".OutboxActivity" />
+        <activity android:name=".BacaOutboxActivity" />
+        <activity android:name=".DisposisiMasuk">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PanelActivity" />
         </activity>
+        <activity android:name=".BacaDmasukActivity" />
+        <activity android:name=".DisposisiKeluar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PanelActivity" />
+        </activity>
+        <activity android:name=".BacaDkeluarActivity"></activity>
     </application>
 
 </manifest>

@@ -85,7 +85,7 @@ public class BuatDisposisiActivity extends AppCompatActivity {
             finish();
         } else {
             pengguna = Prefs.getAll();
-            Log.d("userdata",pengguna.toString());
+            Log.d(getPackageName(),pengguna.toString());
         }
 
 

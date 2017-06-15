@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionMenu;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import org.json.JSONException;
@@ -44,14 +45,16 @@ import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import pl.droidsonroids.gif.GifImageView;
 
-public class PanelActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class PanelActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     public TextView tvNamaLengkap;
     public TextView tvJabatanDinas;
     public ImageView ivFotoProfil;
     public GifImageView anim;
+
+    public com.github.clans.fab.FloatingActionButton fabCompose;
+    public com.github.clans.fab.FloatingActionButton fabBuatDisposisi;
 
     public Map pengguna;
 
@@ -83,15 +86,23 @@ public class PanelActivity extends AppCompatActivity
             pengguna = Prefs.getAll();
         }
 
-        // TODO: 4/2/17 lempar ke LoginActivity kalau Prefs kosong
+        fabCompose = (com.github.clans.fab.FloatingActionButton)findViewById(R.id.fabCompose);
+        fabBuatDisposisi = (com.github.clans.fab.FloatingActionButton)findViewById(R.id.fabBuatDisposisi);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fabCompose.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
+                startActivity(new Intent(PanelActivity.this,ComposeActivity.class));
             }
         });
+
+        fabBuatDisposisi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PanelActivity.this,BuatDisposisiActivity.class));
+            }
+        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -148,12 +159,8 @@ public class PanelActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.keluar) {
             AlertDialog.Builder builder = new AlertDialog.Builder(PanelActivity.this);
             builder.setTitle("Konfirmasi");
@@ -196,11 +203,13 @@ public class PanelActivity extends AppCompatActivity
         } else if (id == R.id.menu_inbox) {
             startActivity(new Intent(PanelActivity.this,InboxActivity.class));
         } else if (id == R.id.menu_outbox) {
-
+            startActivity(new Intent(PanelActivity.this,OutboxActivity.class));
+        } else if(id == R.id.menu_bdisposisi) {
+            startActivity(new Intent(PanelActivity.this,BuatDisposisiActivity.class));
         } else if (id == R.id.menu_dmasuk) {
-
+            startActivity(new Intent(PanelActivity.this,DisposisiMasuk.class));
         } else if (id == R.id.menu_dkeluar) {
-
+            startActivity(new Intent(PanelActivity.this,DisposisiKeluar.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

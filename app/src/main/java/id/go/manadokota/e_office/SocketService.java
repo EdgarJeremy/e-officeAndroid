@@ -2,19 +2,14 @@ package id.go.manadokota.e_office;
 
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v7.app.NotificationCompat;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.pixplicity.easyprefs.library.Prefs;
 
@@ -78,11 +73,11 @@ public class SocketService extends Service {
                 JSONObject data = (JSONObject)args[0];
 
                 try {
-//                    Intent notifIntent = new Intent(SocketService.this, BacaSuratActivity.class);
+//                    Intent notifIntent = new Intent(SocketService.this, BacaInboxActivity.class);
 //                    notifIntent.putExtra("id_pesan", data.getString("id_pesan"));
 
                     TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(SocketService.this);
-                    taskStackBuilder.addParentStack(BacaSuratActivity.class);
+                    taskStackBuilder.addParentStack(BacaInboxActivity.class);
 //                    taskStackBuilder.addNextIntent(notifIntent);
 
 //                    PendingIntent pendingIntent = taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);

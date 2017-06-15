@@ -51,5 +51,6 @@ dependencies {
     compile 'io.nlopez.smartlocation:library:3.2.11'
     compile 'com.karumi:dexter:3.0.2'
     compile 'com.wdullaer:materialdatetimepicker:3.2.2'
+    compile 'com.github.clans:fab:1.6.4'
     testCompile 'junit:junit:4.12'
 }

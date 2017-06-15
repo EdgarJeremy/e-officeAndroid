@@ -74,10 +74,10 @@ public class PilihPenerimaSurat extends AppCompatActivity {
                     public void onCompleted(Exception e, JsonArray result) {
                         progressDialog.cancel();
                         if(e != null) {
-                            Log.d("Salah",e.getMessage());
+                            Log.d(getPackageName(),e.getMessage());
                             Toast.makeText(PilihPenerimaSurat.this,"Server bermasalah!",Toast.LENGTH_LONG).show();
                         } else {
-                            Log.d("Kembalian",result.toString());
+                            Log.d(getPackageName(),result.toString());
                             for(int i=0;i<result.size();i++){
                                 JsonObject itemObject = result.get(i).getAsJsonObject();
                                 daftarNama.add(itemObject.get("nama_lengkap").getAsString());

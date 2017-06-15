@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_baca_surat"
+    android:id="@+id/activity_baca_outbox"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="id.go.manadokota.e_office.BacaSuratActivity">
+    tools:context="id.go.manadokota.e_office.BacaOutboxActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,43 +37,6 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Button
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Balas"
-                    android:id="@+id/btnBalas"
-                    android:layout_weight="1"
-                    android:background="#2980b9"
-                    android:textColor="#ffffff"/>
-                <Button
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Forward"
-                    android:id="@+id/btnForward"
-                    android:layout_weight="1"
-                    android:background="#27ae60"
-                    android:textColor="#ffffff"/>
-                <Button
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Lampiran"
-                    android:id="@+id/btnLampiran"
-                    android:layout_weight="1"
-                    android:background="#f39c12"
-                    android:textColor="#ffffff"/>
-                <Button
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Disposisi"
-                    android:id="@+id/btnDisposisi"
-                    android:layout_weight="1"
-                    android:background="#e74c3c"
-                    android:textColor="#ffffff"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#999999"/>
 
@@ -87,9 +50,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pengirim : Bobby Najoan"
+                    android:text="Penerima : Bobby Najoan"
                     android:textColor="#34495e"
-                    android:id="@+id/txNamaPengirim"/>
+                    android:id="@+id/txNamaPenerima"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

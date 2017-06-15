@@ -98,10 +98,10 @@ public class PengaturanActivity extends AppCompatActivity {
                                     public void onCompleted(Exception e, JsonObject result) {
                                         progressDialog.cancel();
                                         if(e != null) {
-                                            Log.d("Salah",e.getMessage());
+                                            Log.d(getPackageName(),e.getMessage());
                                             Toast.makeText(PengaturanActivity.this, R.string.server_error_msg,Toast.LENGTH_LONG).show();
                                         } else {
-                                            Log.d("Kembalian",result.toString());
+                                            Log.d(getPackageName(),result.toString());
                                             int stat = result.get("statusCode").getAsInt();
                                             if(stat == 3) {
                                                 Toast.makeText(PengaturanActivity.this, "Data berhasil disimpan!", Toast.LENGTH_LONG).show();

@@ -21,39 +21,38 @@ import com.koushikdutta.ion.Ion;
 
 import net.colindodd.toggleimagebutton.ToggleImageButton;
 
-import org.json.JSONObject;
-
 import java.util.List;
 
 /**
  * Created by edgar on 5/4/17.
  */
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
+class RecyclerAdapterDmasuk extends RecyclerView.Adapter<RecyclerAdapterDmasuk.RecyclerViewHolder> {
 
-    private static List<JsonObject> daftar_surat;
-    public static Context ctx;
+    private static List<JsonObject> daftar_disposisi;
+    private static Context ctx;
 
-    RecyclerAdapter(List<JsonObject> daftar_surat,Context ctx) {
-        this.daftar_surat = daftar_surat;
+    RecyclerAdapterDmasuk(List<JsonObject> daftar_disposisi, Context ctx) {
+        this.daftar_disposisi = daftar_disposisi;
         this.ctx = ctx;
     }
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
-        RecyclerViewHolder recyclerViewHolder = new RecyclerViewHolder(view);
-        return recyclerViewHolder;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_dmasuk,parent,false);
+        return new RecyclerViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         // TODO: 5/4/17 Populate textview dengan JsonObject
-        JsonObject item = daftar_surat.get(position);
-        holder.txPerihal.setText(item.get("subjek").getAsString());
-        holder.txNamaPengirim.setText(item.get("pengirim").getAsString());
+        JsonObject item = daftar_disposisi.get(position);
+
+        holder.txPerihal.setText((item.get("subjek").toString().equals("null")) ? "Tidak ada surat terlampir" : item.get("subjek").getAsString());
+
+        holder.txNamaPengirim.setText((item.get("nama_lengkap").getAsString()));
+        holder.txInstruksiDisposisi.setText(item.get("instruksi_disposisi").getAsString());
         holder.txWaktuKirim.setText(item.get("waktu_kirim").getAsString());
-        holder.txRingkasan.setText(item.get("isi_pesan").getAsString());
 
         if(item.get("dibaca").getAsInt() == 0) {
             holder.cardView.setBackgroundColor(Color.parseColor("#ffe78a"));
@@ -76,26 +75,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
 
 
     public void clear() {
-        daftar_surat.clear();
+        daftar_disposisi.clear();
         notifyDataSetChanged();
     }
 
     public void addAll(List<JsonObject> listBaru) {
-        daftar_surat.addAll(listBaru);
+        daftar_disposisi.addAll(listBaru);
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return daftar_surat.size();
+        return daftar_disposisi.size();
     }
 
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
         public TextView txPerihal;
-        public TextView txNamaPengirim;
+        TextView txNamaPengirim;
+        public TextView txInstruksiDisposisi;
         public TextView txWaktuKirim;
-        public TextView txRingkasan;
         public Button btnBaca;
         public Button btnHapus;
         public CardView cardView;
@@ -106,8 +105,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             cardView = (CardView)view.findViewById(R.id.card_view);
             txPerihal = (TextView)view.findViewById(R.id.txPerihal);
             txNamaPengirim = (TextView)view.findViewById(R.id.txNamaPengirim);
+            txInstruksiDisposisi = (TextView)view.findViewById(R.id.txInstruksiDisposisi);
             txWaktuKirim = (TextView)view.findViewById(R.id.txWaktuKirim);
-            txRingkasan = (TextView)view.findViewById(R.id.txRingkasan);
             btnBaca = (Button)view.findViewById(R.id.btnBaca);
             btnHapus = (Button)view.findViewById(R.id.btnHapus);
             btnStarred = (ToggleImageButton)view.findViewById(R.id.btnStarred);
@@ -115,26 +114,27 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    handleBaca(daftar_surat.get(getAdapterPosition()));
+                    handleBaca(daftar_disposisi.get(getAdapterPosition()));
                 }
             });
             btnBaca.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    handleBaca(daftar_surat.get(getAdapterPosition()));
+                    handleBaca(daftar_disposisi.get(getAdapterPosition()));
                 }
             });
             btnStarred.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    updateBintang(btnStarred.isChecked(),daftar_surat.get(getAdapterPosition()).get("id_relasi_pesan").getAsInt());
+                    updateBintang(btnStarred.isChecked(), daftar_disposisi.get(getAdapterPosition()).get("id_relasi_disposisi").getAsInt());
                 }
             });
         }
 
         private void handleBaca(JsonObject itemData) {
-            Intent intent = new Intent(ctx,BacaSuratActivity.class);
-            intent.putExtra("id_pesan",itemData.get("id_pesan").getAsString());
+            Intent intent = new Intent(ctx,BacaDmasukActivity.class);
+            intent.putExtra("id_disposisi",itemData.get("id_disposisi").getAsString());
+            intent.putExtra("kode_disposisi",itemData.get("kode_disposisi").getAsString());
             ctx.startActivity(intent);
         }
 
@@ -142,22 +142,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
 
         }
 
-        private void updateBintang(final Boolean checked, int id_relasi_pesan) {
+        private void updateBintang(final Boolean checked,int id_relasi_disposisi) {
             Ion.with(ctx)
-                    .load(Config.API_BASE_URL + "/update_bintang")
-                    .setBodyParameter("id_relasi_pesan",Integer.toString(id_relasi_pesan))
+                    .load(Config.API_BASE_URL + "/update_bintang_disposisi")
+                    .setBodyParameter("id_relasi_disposisi",Integer.toString(id_relasi_disposisi))
                     .setBodyParameter("starred",(checked) ? "1" : "0")
                     .asString()
                     .setCallback(new FutureCallback<String>() {
                         @Override
                         public void onCompleted(Exception e, String result) {
                             if(e != null) {
-                                Log.d("Salah",e.getMessage());
+                                Log.d(ctx.getPackageName(),e.getMessage());
                                 btnStarred.setChecked(!checked);
                                 Toast.makeText(ctx,"Terjadi kesalahan!",Toast.LENGTH_LONG).show();
                             } else {
-                                Log.d("Kembalian",result);
-                                Toast.makeText(ctx,"Surat diupdate",Toast.LENGTH_LONG).show();
+                                Log.d(ctx.getPackageName(),result);
+                                Toast.makeText(ctx,"Disposisi diupdate",Toast.LENGTH_LONG).show();
                             }
                         }
                     });

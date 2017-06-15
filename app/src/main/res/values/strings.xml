@@ -29,4 +29,5 @@
         <item>Disiapkan sambutan tertulis</item>
         <item>Disiapkan atau saran-saran</item>
     </string-array>
+    <string name="title_activity_baca_dmasuk">BacaDmasukActivity</string>
 </resources>

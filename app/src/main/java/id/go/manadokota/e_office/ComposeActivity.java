@@ -134,12 +134,14 @@ public class ComposeActivity extends AppCompatActivity {
         if(fileTerpilih == null) {
             mIon = Ion.with(ComposeActivity.this)
                     .load(Config.API_BASE_URL + "/kirim_surat")
+                    .setMultipartParameter("id_pengguna",pengguna.get("id_pengguna").toString())
                     .setMultipartParameter("penerima",daftarIdTerpilih.toString())
                     .setMultipartParameter("subjek",perihal)
                     .setMultipartParameter("isi_pesan",isi);
         } else {
             mIon = Ion.with(ComposeActivity.this)
                     .load(Config.API_BASE_URL + "/kirim_surat")
+                    .setMultipartParameter("id_pengguna",pengguna.get("id_pengguna").toString())
                     .setMultipartParameter("penerima",daftarIdTerpilih.toString())
                     .setMultipartParameter("subjek",perihal)
                     .setMultipartParameter("isi_pesan",isi)

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.util.Log;
 
 import com.pixplicity.easyprefs.library.Prefs;
 
@@ -16,13 +17,17 @@ import java.security.NoSuchAlgorithmException;
 
 public class Config {
 
+
     // API Configuration
-    public static String BASE_HOST = "http://192.168.137.71";
+//    public static String BASE_HOST = "http://36.67.90.76";
+//    public static String API_BASE_URL = BASE_HOST + "/api";
+    public static String BASE_HOST = "http://192.168.137.60";
     public static String API_BASE_URL = BASE_HOST + "/disposisi/api";
     public static int SOCKET_PORT = 7008;
 
 
     public static String PREFS_NAME = "e-Office";
+
 
     public static final String md5(final String s) {
         final String MD5 = "MD5";
